@@ -1,2 +1,135 @@
-<h1>Oops! Looks like you're lost.</h1>
-<h2>Well.. Orion isn't here. Mehri neither.</h2>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>not found</title>
+
+  <link rel="icon" href="pfp.webp" type="image/webp">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .bg::before,
+    .bg::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.02) 40px,
+        rgba(255,255,255,0.02) 80px
+      );
+    }
+
+    .bg::before {
+      top: -50%;
+      animation: wave1 25s linear infinite;
+      opacity: 0.6;
+    }
+
+    .bg::after {
+      top: -30%;
+      animation: wave2 18s linear infinite reverse;
+      opacity: 0.4;
+    }
+
+    @keyframes wave1 {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); }
+      100% { transform: translateX(-50%) translateY(30px) rotate(3deg); }
+    }
+
+    @keyframes wave2 {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); }
+      100% { transform: translateX(-40%) translateY(50px) rotate(-2deg); }
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(20,20,20,0.6);
+      padding: 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+      animation: glow 4s ease-in-out infinite;
+      max-width: 420px;
+    }
+
+    @keyframes glow {
+      0%,100% {
+        box-shadow:
+          0 0 30px rgba(0,0,0,0.7),
+          0 0 5px rgba(255,255,255,0.05);
+      }
+      50% {
+        box-shadow:
+          0 0 40px rgba(0,0,0,0.8),
+          0 0 20px rgba(255,255,255,0.15);
+      }
+    }
+
+    .pfp {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .text a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bg"></div>
+
+  <div class="wrapper">
+    <img src="pfp.webp" class="pfp">
+
+    <div class="text">
+      well, i'm just searching for mehri.<br>
+      i guess you're lost, right?<br><br>
+      just go back by clicking <a href="/">here</a>.
+    </div>
+  </div>
+
+</body>
+</html>
