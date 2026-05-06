@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>orionn</title>
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="pfp.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+  <!-- embed -->
   <meta property="og:title" content="orionn">
   <meta property="og:description" content="just a teenager living, i want no trouble.">
   <meta property="og:type" content="website">
@@ -24,12 +27,14 @@
 
 <div class="card">
   <img src="pfp.webp" class="pfp">
+
   <h1>hiii, i'm orionn</h1>
+
   <p>
     i like to play and listen to music (i really love music tbh).<br><br>
-    my favorite music is: (dream) - salvia path
+    my favorite music is: (dream) - salvia path<br>
     my favorite games are omori, sally face, minecraft and roblox.<br><br>
-    obs: im not into the fandom of any of those (omori is an exception)
+    obs: im not into the fandom of any of those (omori is an exception)<br>
     just a random guy messing with tech and learning stuff as i go.
   </p>
 </div>
@@ -42,10 +47,13 @@
 
 <script>
 function enterSite() {
-  document.getElementById("overlay").style.opacity = "0";
+  const overlay = document.getElementById("overlay");
+  overlay.style.opacity = "0";
+
   setTimeout(() => {
-    document.getElementById("overlay").style.display = "none";
+    overlay.style.display = "none";
   }, 500);
+
   document.getElementById("music").play();
 }
 
@@ -69,13 +77,8 @@ document.addEventListener("keydown", (e) => {
       msg.style.transform = "translate(-50%, -50%) scale(1)";
     }, 10);
 
-    setTimeout(() => {
-      msg.style.opacity = "0";
-    }, 2000);
-
-    setTimeout(() => {
-      msg.style.display = "none";
-    }, 2500);
+    setTimeout(() => msg.style.opacity = "0", 2000);
+    setTimeout(() => msg.style.display = "none", 2500);
 
     secret = "";
   }
