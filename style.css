@@ -12,65 +12,83 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: #0a001f;
+  background: #0a0a0a;
 }
 
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(120, 50, 255, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(0, 200, 255, 0.20) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(255, 50, 150, 0.15) 0%, transparent 50%);
-  animation: nebula 35s ease infinite;
+  background: #0a0a0a;
+  overflow: hidden;
 }
 
-.bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(white 1px, transparent 1px);
-  background-position: 0 0, 25px 25px;
-  background-size: 50px 50px;
-  opacity: 0.15;
-  animation: stars 80s linear infinite;
-}
-
+.bg::before,
 .bg::after {
   content: "";
   position: absolute;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.03) 40px,
+    rgba(255,255,255,0.03) 80px
+  );
+}
+
+.bg::before {
+  top: -50%;
+  animation: wave1 25s linear infinite;
+  opacity: 0.6;
+}
+
+.bg::after {
+  top: -30%;
+  animation: wave2 18s linear infinite reverse;
+  opacity: 0.4;
+}
+
+.bg::after::after {
+  content: "";
+  position: absolute;
   inset: 0;
-  background: linear-gradient(transparent, rgba(10, 0, 31, 0.6));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(255,255,255,0.06) 60%,
+    transparent 80%
+  );
+  animation: wave3 32s linear infinite;
 }
 
-@keyframes nebula {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  50%  { transform: translate(30px, 40px) rotate(1deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+@keyframes wave1 {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  100% { transform: translateX(-50%) translateY(30px) rotate(3deg); }
 }
 
-@keyframes stars {
-  from { background-position: 0 0, 25px 25px; }
-  to   { background-position: -100px -100px, -75px -75px; }
+@keyframes wave2 {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  100% { transform: translateX(-40%) translateY(50px) rotate(-2deg); }
+}
+
+@keyframes wave3 {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-80px); }
 }
 
 .card {
-  background: rgba(20, 15, 40, 0.65);
+  background: rgba(20, 20, 20, 0.75);
   padding: 25px;
   border-radius: 20px;
   width: 90%;
   max-width: 340px;
   text-align: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 0 50px rgba(100, 50, 255, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
   animation: fade 1s ease;
-  border: 1px solid rgba(150, 100, 255, 0.2);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 .pfp {
@@ -79,12 +97,13 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
-  border: 3px solid rgba(180, 120, 255, 0.6);
+  border: 3px solid rgba(255,255,255,0.25);
   transition: 0.4s;
 }
 
 .pfp:hover {
-  transform: scale(1.08) rotate(5deg);
+  transform: scale(1.07);
+  border-color: rgba(255,255,255,0.5);
 }
 
 h1 {
@@ -96,7 +115,7 @@ h1 {
 p {
   font-size: clamp(13px, 3.5vw, 14.5px);
   line-height: 1.65;
-  opacity: 0.92;
+  opacity: 0.9;
 }
 
 @keyframes fade {
@@ -108,7 +127,7 @@ p {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #0a001f;
+  background: #0a0a0a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,14 +137,14 @@ p {
 }
 
 #overlay h1 {
-  opacity: 0.75;
+  opacity: 0.7;
   font-weight: 400;
   transition: 0.3s;
 }
 
 #overlay:hover h1 {
   opacity: 1;
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 #secretMsg {
@@ -133,19 +152,23 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.7);
-  background: rgba(0,0,0,0.9);
+  background: rgba(10,10,10,0.95);
   padding: 20px 35px;
   border-radius: 12px;
   font-size: 19px;
   display: none;
   opacity: 0;
   transition: all 0.4s;
-  border: 1px solid #b080ff;
-  box-shadow: 0 0 30px rgba(180, 120, 255, 0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
 }
 
 @media (max-width: 480px) {
   .card {
     padding: 22px 18px;
+  }
+  
+  .bg::before, .bg::after {
+    animation-duration: 18s;
   }
 }
