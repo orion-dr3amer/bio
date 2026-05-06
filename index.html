@@ -1,89 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>orionn</title>
-
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="pfp.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- embed -->
+  
   <meta property="og:title" content="orionn">
   <meta property="og:description" content="just a teenager living, i want no trouble.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#1a0033">
 </head>
-
 <body>
+  <div id="overlay" onclick="enterSite()">
+    <h1>click to enter</h1>
+  </div>
 
-<div id="overlay" onclick="enterSite()">
-  <h1>click to enter</h1>
-</div>
+  <div class="bg"></div>
 
-<div class="bg"></div>
+  <div class="card">
+    <img src="pfp.webp" class="pfp">
+    <h1>hiii, i'm orionn</h1>
+    <p>
+      i like to play and listen to music (i really love music tbh).<br><br>
+      my favorite music is: (dream) - salvia path<br>
+      my favorite games are omori, sally face, minecraft and roblox.<br><br>
+      obs: im not into the fandom of any of those (omori is an exception)<br>
+      just a random guy messing with tech and learning stuff as i go.
+    </p>
+  </div>
 
-<div class="card">
-  <img src="pfp.webp" class="pfp">
+  <div id="secretMsg">i love mehri!!</div>
 
-  <h1>hiii, i'm orionn</h1>
+  <audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-  <p>
-    i like to play and listen to music (i really love music tbh).<br><br>
-    my favorite music is: (dream) - salvia path<br>
-    my favorite games are omori, sally face, minecraft and roblox.<br><br>
-    obs: im not into the fandom of any of those (omori is an exception)<br>
-    just a random guy messing with tech and learning stuff as i go.
-  </p>
-</div>
+  <script>
+    function enterSite() {
+      const overlay = document.getElementById("overlay");
+      overlay.style.opacity = "0";
+      setTimeout(() => overlay.style.display = "none", 500);
+      document.getElementById("music").play();
+    }
 
-<div id="secretMsg">i love mehri!!</div>
-
-<audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function enterSite() {
-  const overlay = document.getElementById("overlay");
-  overlay.style.opacity = "0";
-
-  setTimeout(() => {
-    overlay.style.display = "none";
-  }, 500);
-
-  document.getElementById("music").play();
-}
-
-let secret = "";
-const code = "mehri";
-
-document.addEventListener("keydown", (e) => {
-  secret += e.key.toLowerCase();
-
-  if (!code.startsWith(secret)) {
-    secret = "";
-  }
-
-  if (secret === code) {
-    const msg = document.getElementById("secretMsg");
-
-    msg.style.display = "block";
-
-    setTimeout(() => {
-      msg.style.opacity = "1";
-      msg.style.transform = "translate(-50%, -50%) scale(1)";
-    }, 10);
-
-    setTimeout(() => msg.style.opacity = "0", 2000);
-    setTimeout(() => msg.style.display = "none", 2500);
-
-    secret = "";
-  }
-});
-</script>
-
+    let secret = "";
+    const code = "mehri";
+    document.addEventListener("keydown", (e) => {
+      secret += e.key.toLowerCase();
+      if (!code.startsWith(secret)) secret = "";
+      if (secret === code) {
+        const msg = document.getElementById("secretMsg");
+        msg.style.display = "block";
+        setTimeout(() => {
+          msg.style.opacity = "1";
+          msg.style.transform = "translate(-50%, -50%) scale(1)";
+        }, 10);
+        setTimeout(() => msg.style.opacity = "0", 2000);
+        setTimeout(() => msg.style.display = "none", 2500);
+        secret = "";
+      }
+    });
+  </script>
 </body>
 </html>
