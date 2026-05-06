@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>orionn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="overlay" onclick="enterSite()">
+  <h1>click to enter</h1>
+</div>
+
+<div class="bg"></div>
+
+<div class="card">
+  <img src="pfp.png" class="pfp">
+  <h1>hiii, i'm orionn</h1>
+  <p>
+    i like to play and listen to music (i really love music tbh).<br><br>
+    my favorite games are omori, minecraft and roblox.<br><br>
+    just a random guy messing with tech and learning stuff as i go.
+  </p>
+</div>
+
+<div id="secretMsg">i love mehri!!</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function enterSite() {
+  document.getElementById("overlay").style.opacity = "0";
+  setTimeout(() => {
+    document.getElementById("overlay").style.display = "none";
+  }, 500);
+  document.getElementById("music").play();
+}
+
+let secret = "";
+const code = "mehri";
+
+document.addEventListener("keydown", (e) => {
+  secret += e.key.toLowerCase();
+
+  if (!code.startsWith(secret)) {
+    secret = "";
+  }
+
+  if (secret === code) {
+    const msg = document.getElementById("secretMsg");
+
+    msg.style.display = "block";
+
+    setTimeout(() => {
+      msg.style.opacity = "1";
+      msg.style.transform = "translate(-50%, -50%) scale(1)";
+    }, 10);
+
+    setTimeout(() => {
+      msg.style.opacity = "0";
+    }, 2000);
+
+    setTimeout(() => {
+      msg.style.display = "none";
+    }, 2500);
+
+    secret = "";
+  }
+});
+</script>
+
+</body>
+</html>
