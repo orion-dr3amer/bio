@@ -69,16 +69,33 @@ body {
   max-width: 340px;
   text-align: center;
   backdrop-filter: blur(14px);
-  box-shadow: 
-    0 0 40px rgba(0, 0, 0, 0.7),
-    0 0 10px rgba(255,255,255,0.03) inset;
   border: 1px solid rgba(255,255,255,0.06);
-  animation: fade 1s ease;
+  animation: fade 1s ease, glow 4s ease-in-out infinite;
   transition: 0.3s;
 }
 
 .card:hover {
   transform: translateY(-3px);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow:
+      0 0 30px rgba(0,0,0,0.7),
+      0 0 5px rgba(255,255,255,0.05);
+  }
+
+  50% {
+    box-shadow:
+      0 0 40px rgba(0,0,0,0.8),
+      0 0 20px rgba(255,255,255,0.15);
+  }
+
+  100% {
+    box-shadow:
+      0 0 30px rgba(0,0,0,0.7),
+      0 0 5px rgba(255,255,255,0.05);
+  }
 }
 
 .pfp {
