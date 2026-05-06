@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>not found</title>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>not found</title>
 
   <link rel="icon" href="/pfp.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
@@ -23,6 +29,7 @@
       align-items: center;
       background: #0a0a0a;
       overflow: hidden;
+      padding: 20px;
     }
 
     .bg {
@@ -79,7 +86,8 @@
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.06);
       animation: glow 4s ease-in-out infinite;
-      max-width: 420px;
+
+      width: min(420px, 92vw);
     }
 
     @keyframes glow {
@@ -125,16 +133,32 @@
       display: none;
 
       max-width: 90vw;
-      width: fit-content;
-
       text-align: center;
+
       white-space: pre-wrap;
       word-break: break-word;
-
       line-height: 1.4;
       letter-spacing: 0.5px;
 
       transition: opacity 0.3s ease;
+    }
+
+    /* 📱 MOBILE TUNING */
+    @media (max-width: 600px) {
+      .wrapper {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px;
+      }
+
+      .pfp {
+        width: 90px;
+        height: 90px;
+      }
+
+      .text {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -144,11 +168,12 @@
   <div class="bg"></div>
 
   <div class="wrapper" id="tapArea">
-    <img src="pfp.webp" class="pfp">
+    <img src="/pfp.webp" class="pfp">
 
     <div class="text">
       well, i'm just searching for mehri.<br>
       i guess you're lost, right?<br><br>
+
       just go back by clicking <a href="/">here</a>.
     </div>
   </div>
@@ -172,15 +197,13 @@
     let taps = 0;
     const tapArea = document.getElementById("tapArea");
 
-    if (tapArea) {
-      tapArea.addEventListener("click", () => {
-        taps++;
-        if (taps >= 5) {
-          triggerSecret();
-          taps = 0;
-        }
-      });
-    }
+    tapArea.addEventListener("click", () => {
+      taps++;
+      if (taps >= 5) {
+        triggerSecret();
+        taps = 0;
+      }
+    });
 
     function triggerSecret() {
       if (typing) return;
@@ -206,12 +229,10 @@
         } else {
           setTimeout(() => {
             box.style.opacity = "0";
-
             setTimeout(() => {
               box.style.display = "none";
               typing = false;
             }, 300);
-
           }, 2000);
         }
       }
