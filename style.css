@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: white;
   height: 100vh;
   display: flex;
@@ -15,10 +15,10 @@ body {
   width: 200%;
   height: 200%;
   background-image: 
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 40px 40px;
-  animation: move 20s linear infinite;
+  animation: move 25s linear infinite;
   z-index: -1;
 }
 
@@ -28,13 +28,15 @@ body {
 }
 
 .card {
-  background: rgba(0,0,0,0.6);
+  background: rgba(20,20,20,0.55);
   padding: 35px;
   border-radius: 18px;
   width: 320px;
   text-align: center;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   animation: fade 1s ease;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 .pfp {
@@ -54,11 +56,12 @@ body {
 h1 {
   margin: 10px 0;
   font-size: 24px;
+  font-weight: 600;
 }
 
 p {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
   opacity: 0.9;
 }
 
@@ -81,8 +84,9 @@ p {
 }
 
 #overlay h1 {
-  opacity: 0.8;
+  opacity: 0.7;
   transition: 0.3s;
+  font-weight: 400;
 }
 
 #overlay:hover h1 {
@@ -95,10 +99,10 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.85);
   padding: 20px 30px;
   border-radius: 12px;
-  font-size: 20px;
+  font-size: 18px;
   display: none;
   opacity: 0;
   transition: 0.3s;
