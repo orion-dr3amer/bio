@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   color: white;
   min-height: 100vh;
   display: flex;
@@ -50,19 +50,6 @@ body {
   opacity: 0.4;
 }
 
-.bg::after::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 40%,
-    rgba(255,255,255,0.06) 60%,
-    transparent 80%
-  );
-  animation: wave3 32s linear infinite;
-}
-
 @keyframes wave1 {
   0%   { transform: translateX(0) translateY(0) rotate(0deg); }
   100% { transform: translateX(-50%) translateY(30px) rotate(3deg); }
@@ -71,11 +58,6 @@ body {
 @keyframes wave2 {
   0%   { transform: translateX(0) translateY(0) rotate(0deg); }
   100% { transform: translateX(-40%) translateY(50px) rotate(-2deg); }
-}
-
-@keyframes wave3 {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-80px); }
 }
 
 .card {
