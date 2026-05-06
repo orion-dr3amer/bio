@@ -20,7 +20,6 @@ body {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: #0a0a0a;
   overflow: hidden;
 }
 
@@ -52,12 +51,12 @@ body {
 }
 
 @keyframes wave1 {
-  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
   100% { transform: translateX(-50%) translateY(30px) rotate(3deg); }
 }
 
 @keyframes wave2 {
-  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
   100% { transform: translateX(-40%) translateY(50px) rotate(-2deg); }
 }
 
@@ -79,22 +78,15 @@ body {
 }
 
 @keyframes glow {
-  0% {
+  0%,100% {
     box-shadow:
       0 0 30px rgba(0,0,0,0.7),
       0 0 5px rgba(255,255,255,0.05);
   }
-
   50% {
     box-shadow:
       0 0 40px rgba(0,0,0,0.8),
       0 0 20px rgba(255,255,255,0.15);
-  }
-
-  100% {
-    box-shadow:
-      0 0 30px rgba(0,0,0,0.7),
-      0 0 5px rgba(255,255,255,0.05);
   }
 }
 
@@ -170,16 +162,7 @@ p {
   display: none;
   opacity: 0;
   transition: all 0.4s;
+  letter-spacing: 0.4px;
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: 0 0 30px rgba(0,0,0,0.8);
-}
-
-@media (max-width: 480px) {
-  .card {
-    padding: 22px 18px;
-  }
-  
-  .bg::before, .bg::after {
-    animation-duration: 18s;
-  }
 }
