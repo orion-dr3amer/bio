@@ -4,26 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>orionn</title>
-
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="pfp.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-  
   <meta property="og:title" content="orionn">
   <meta property="og:description" content="just a teenager living, i want no trouble.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0a0a0a">
 </head>
-
 <body>
-
   <div id="overlay" onclick="enterSite()">
     <h1>click to enter</h1>
   </div>
 
   <div class="bg"></div>
 
-  <div class="card">
+  <div class="card" id="card">
     <img src="pfp.webp" class="pfp">
     <h1>hiii, i'm orionn</h1>
     <p>
@@ -35,7 +31,7 @@
     </p>
   </div>
 
-  <div id="secretMsg">i love mehri!!</div>
+  <div id="secretMsg"></div>
 
   <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
@@ -49,31 +45,41 @@
       document.getElementById("music").play();
     }
 
-    let secret = "";
-    const code = "mehri";
+    let typed = "";
 
     document.addEventListener("keydown", (e) => {
-      secret += e.key.toLowerCase();
+      typed += e.key.toLowerCase();
+      if (typed.length > 10) typed = typed.slice(-10);
 
-      if (!code.startsWith(secret)) secret = "";
+      if (typed.includes("mehri")) {
+        showMsg("i love Mehri! best boyfriend ever btw");
+        typed = "";
+      }
 
-      if (secret === code) {
-        const msg = document.getElementById("secretMsg");
-
-        msg.style.display = "block";
-
+      if (typed.includes("orion")) {
+        const card = document.getElementById("card");
+        card.style.transform = "scale(1.05)";
+        card.style.boxShadow = "0 0 60px rgba(255,255,255,0.25)";
+        showMsg("for more info, just talk to me, lol.");
         setTimeout(() => {
-          msg.style.opacity = "1";
-          msg.style.transform = "translate(-50%, -50%) scale(1)";
-        }, 10);
-
-        setTimeout(() => msg.style.opacity = "0", 2000);
-        setTimeout(() => msg.style.display = "none", 2500);
-
-        secret = "";
+          card.style.transform = "";
+          card.style.boxShadow = "";
+        }, 1500);
+        typed = "";
       }
     });
-  </script>
 
+    function showMsg(text) {
+      const msg = document.getElementById("secretMsg");
+      msg.innerText = text;
+      msg.style.display = "block";
+      setTimeout(() => {
+        msg.style.opacity = "1";
+        msg.style.transform = "translate(-50%, -50%) scale(1)";
+      }, 10);
+      setTimeout(() => msg.style.opacity = "0", 2000);
+      setTimeout(() => msg.style.display = "none", 2500);
+    }
+  </script>
 </body>
 </html>
